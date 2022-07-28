@@ -1,15 +1,20 @@
 <script setup lang="ts">
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-const myName: string = 'mohamed';
+import { reactive, ref } from "@vue/reactivity";
+import { Job } from "./interfaces/Job";
+
+const name = ref<number>(0);
+
+const user: Job = reactive({
+  id: "20",
+  title: "mohamed",
+  location: "hosh esa",
+  salary: 344,
+});
+console.log(name);
 </script>
 
 <template>
-  <section class="main-app">
-    hello, {{myName}}
-  </section>
+  <section class="main-app">hello, {{ myName }}</section>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
