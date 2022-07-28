@@ -1,20 +1,20 @@
 <script setup lang="ts">
-import { reactive, ref } from "@vue/reactivity";
+import {  ref } from "@vue/reactivity";
 import { Job } from "./interfaces/Job";
 
-const name = ref<number>(0);
-
-const user: Job = reactive({
-  id: "20",
-  title: "mohamed",
-  location: "hosh esa",
-  salary: 344,
-});
-console.log(name);
+const jobs = ref<Job[]>([
+  { title: "farm worker", location: "lon lon ranch", salary: 30000, id: "1" },
+  { title: "quarryman", location: "death mountain", salary: 40000, id: "2" },
+  { title: "flute player", location: "the lost woods", salary: 35000, id: "3" },
+  { title: "fisherman", location: "lake hylia", salary: 21000, id: "4" },
+  { title: "prison guard", location: "gerudo valley", salary: 32000, id: "5" },
+]);
 </script>
 
 <template>
-  <section class="main-app">hello, {{ myName }}</section>
+  <section class="main-app">
+    <p>{{jobs[0]}}</p>
+  </section>
 </template>
 
 <style scoped></style>
