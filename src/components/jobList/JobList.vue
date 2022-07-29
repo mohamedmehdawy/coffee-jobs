@@ -1,12 +1,14 @@
 <script setup lang="ts">
 import Job from "../../interfaces/Job";
-
+import OrderTerm from "../../interfaces/OrderTerm";
 const props = defineProps<{
-    jobs: Job[];
+    jobs: Job[],
+    order: OrderTerm
 }>();
 </script>
 <template>
     <section class="job-list">
+        <p>Orders by {{order}}</p>
         <ul>
             <li v-for="job in jobs" :key="job.id">
                 <h2>{{ job.title }} in {{ job.location }}</h2>
