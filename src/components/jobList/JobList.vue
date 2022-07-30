@@ -3,23 +3,24 @@ import { computed } from "@vue/reactivity";
 import Job from "../../interfaces/Job";
 import OrderTerm from "../../interfaces/OrderTerm";
 const props = defineProps<{
-    jobs: Job[],
-    order: OrderTerm
+    jobs: Job[];
+    order: OrderTerm;
 }>();
 
 const orderedJobs = computed<Job[]>(() => {
     return [...props.jobs].sort((a: Job, b: Job) => {
-        return a[props.order] > b[props.order] ? 1 : -1
-    })
-})
+        return a[props.order] > b[props.order] ? 1 : -1;
+    });
+});
 </script>
 <template>
     <section class="job-list">
-        <p>Orders by {{order}}</p>
-        <ul>
+        <p>Orders by {{ order }}</p>
+        <transition-group name="list" tag="ul">
             <li v-for="job in orderedJobs" :key="job.id">
                 <h2>{{ job.title }} in {{ job.location }}</h2>
                 <section class="salary">
+                    <img src="../../assets/icons/rupee.svg" alt="rupee" />
                     <p>{{ job.salary }}</p>
                 </section>
                 <section class="description">
@@ -32,7 +33,7 @@ const orderedJobs = computed<Job[]>(() => {
                     </p>
                 </section>
             </li>
-        </ul>
+        </transition-group>
     </section>
 </template>
 <style scoped>
@@ -64,5 +65,8 @@ const orderedJobs = computed<Job[]>(() => {
     color: #17bf66;
     font-weight: bold;
     margin: 10px 4px;
+}
+.list-move {
+    transition: all 1s;
 }
 </style>

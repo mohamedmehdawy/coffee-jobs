@@ -33,11 +33,21 @@ function handelClick(term: OrderTerm): void {
 <template>
     <section class="main-app">
         <header>
+            <section class="title">
+                <img src="./assets/icons/heart.svg" alt="heart logo" />
+                <h1>coffee jobs</h1>
+            </section>
             <section class="order">
-                <button @click="handelClick(order)" v-for="order in orderList" :key="order">Order by {{order}}</button>
+                <button
+                    @click="handelClick(order)"
+                    v-for="order in orderList"
+                    :key="order"
+                >
+                    Order by {{ order }}
+                </button>
             </section>
         </header>
-        <JobList :jobs="jobs" :order="order"/>
+        <JobList :jobs="jobs" :order="order" />
     </section>
 </template>
 
@@ -57,5 +67,16 @@ button {
     border-radius: 4px;
     cursor: pointer;
     font-weight: bold;
+}
+header .title {
+    display: flex;
+    justify-content: center;
+}
+header img {
+    width: 60px;
+    margin-right: 20px;
+}
+header h1 {
+    font-size: 3em;
 }
 </style>
